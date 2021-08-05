@@ -19,7 +19,7 @@ namespace ContactManagerTesting
         [TestCategory("Insert Values in Data Table")]
         public void GivenInsertValues_returnInteger()
         {
-            int expected = 2;
+            int expected = 3;
             int actual=dataTableManger.AddValues();
             Assert.AreEqual(actual, expected);
         }
@@ -62,7 +62,7 @@ namespace ContactManagerTesting
         [TestCategory("Retrieve Row in Data Table based on City ")]
         public void GivenRetrieveQuery_BasedOnCityandState_returnString()
         {
-            string expected = "lalita ";
+            string expected = "lalita Merra ";
             string actual = dataTableManger.RetrieveBasedOnCityorState("Lucknow","TN");
             Assert.AreEqual(actual, expected);
         }
@@ -70,7 +70,7 @@ namespace ContactManagerTesting
         [TestCategory("Retrieve Row in Data Table based on state ")]
         public void GivenRetrieveQuery_BasedOnCityorState_returnString()
         {
-            string expected = "Ash lalita ";
+            string expected = "Ash lalita Merra ";
             string actual = dataTableManger.RetrieveBasedOnCityorState("Lucknow", "UP");
             Assert.AreEqual(actual, expected);
         }
@@ -79,16 +79,8 @@ namespace ContactManagerTesting
         [TestCategory("Retrieve Row in Data Table based on City ")]
         public void GivenRetrieveCountQuery_BasedOnCityandState_returnString()
         {
-            int expected = 1;
-            int actual = dataTableManger.RetrieveCountBasedOnCityorState("Lucknow", "TN");
-            Assert.AreEqual(actual, expected);
-        }
-        [TestMethod]
-        [TestCategory("Retrieve Row in Data Table based on state ")]
-        public void GivenRetrieveCountQuery_BasedOnCityorState_returnString()
-        {
-            int expected = 2;
-            int actual = dataTableManger.RetrieveCountBasedOnCityorState("Lucknow", "UP");
+            string expected = "1 2 ";
+            string actual = dataTableManger.RetrieveCountBasedOnCityorState();
             Assert.AreEqual(actual, expected);
         }
     }

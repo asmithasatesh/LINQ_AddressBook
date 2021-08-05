@@ -119,6 +119,7 @@ namespace LINQ_AddressBook
             //Create Object for DataTable
             ContactDataManager contactDataManager = new ContactDataManager();
             ContactDataManager contactDataManagers = new ContactDataManager();
+
             //Insert Values into Table
             contactDataManager.FirstName = "Ash";
             contactDataManager.LastName = "Satesh";
@@ -140,6 +141,7 @@ namespace LINQ_AddressBook
             contactDataManagers.State = "UP";
             contactDataManagers.zip = 123001;
             InsertintoDataTable(contactDataManagers);
+            custTable.Rows.Add(3,"Merra", "Rajput", "Manikandapyram", "Lucknow", "UP", "meera@gmail.com", 98524930303, 12345);
             return custTable.Rows.Count;
         }
 
@@ -200,15 +202,20 @@ namespace LINQ_AddressBook
             return nameList;
         }
         //Retrieve Count values from DataTable based on City or State
-        public int RetrieveCountBasedOnCityorState(string City, string State)
+        public string RetrieveCountBasedOnCityorState()
         {
             AddValues();
-            int result;
-            var modifiedList = (from ContactList in custTable.AsEnumerable() where (ContactList.Field<string>("State") == State || ContactList.Field<string>("City") == City) select ContactList);
-            result = modifiedList.Count();
-            foreach (var dtRows in modifiedList)
+            string result="";
+            var modifiedList = (from ContactList in custTable.AsEnumerable().GroupBy(r => new { Col1 = r["City"], Col2 = r["State"] }) select ContactList);
+            Console.WriteLine("Äfter count");
+            foreach (var j in modifiedList)
             {
-                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8}\n", dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+                result += j.Count()+" ";
+                Console.WriteLine("Count Key"+j.Key);
+                foreach (var dtRows in j)
+                {
+                    Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8}\n", dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+                }
             }
             return result;
         }

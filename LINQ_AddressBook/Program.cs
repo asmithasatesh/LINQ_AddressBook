@@ -34,8 +34,18 @@ namespace LINQ_AddressBook
             contactDataManagers.State = "TN";
             contactDataManagers.zip = 123001;
             dataTableManger.InsertintoDataTable(contactDataManagers);
+            ContactDataManager contactDataManagerss = new ContactDataManager();
+            contactDataManagerss.FirstName = "lalita";
+            contactDataManagerss.LastName = "poojah";
+            contactDataManagerss.PhoneNumber = 7742905050;
+            contactDataManagerss.Email = "lalita@gmail.com";
+            contactDataManagerss.Address = "Catherine Street B PB marg";
+            contactDataManagerss.City = "ci";
+            contactDataManagerss.State = "TN";
+            contactDataManagerss.zip = 123001;
+            dataTableManger.InsertintoDataTable(contactDataManagerss);
             dataTableManger.Display();
-            string varl = dataTableManger.RetrieveBasedOnCityorState("Bareilly", "UP");
+            string varl = dataTableManger.RetrieveCountBasedOnCityorState();
             Console.WriteLine("Success"+varl);
         }
     }
