@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace LINQ_AddressBook
@@ -139,6 +140,15 @@ namespace LINQ_AddressBook
             contactDataManagers.State = "UP";
             contactDataManagers.zip = 123001;
             InsertintoDataTable(contactDataManagers);
+            contactDataManagers.FirstName = "lalita";
+            contactDataManagers.LastName = "pfffjah";
+            contactDataManagers.PhoneNumber = 7742905050;
+            contactDataManagers.Email = "lalita@gmail.com";
+            contactDataManagers.Address = "Catherine Street B PB marg";
+            contactDataManagers.City = "Bareilly";
+            contactDataManagers.State = "UP";
+            contactDataManagers.zip = 123001;
+            InsertintoDataTable(contactDataManagers);
 
             return custTable.Rows.Count;
         }
@@ -158,12 +168,24 @@ namespace LINQ_AddressBook
             custTable.Rows.Add(dtRow);
 
         }
+        public int EditDataTable(string FirstName,string ColumnName)
+        {
+            AddValues();
+            var modifiedList = (from ContactList in custTable.AsEnumerable() where ContactList.Field<string>("FirstName") == FirstName select ContactList).FirstOrDefault();
+            if (modifiedList != null)
+            {
+                modifiedList[ColumnName] = "Sing";
+                Display();
+                return 1;
+            }
+            else return 0;
+        }
         //Display all Values in DataRow
         public void Display()
         {
             foreach (DataRow dtRows in custTable.Rows)
             {
-                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7}\n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8}\n",dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
             }
         }
     }
