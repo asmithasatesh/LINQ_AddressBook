@@ -14,6 +14,7 @@ namespace ContactManagerTesting
             dataTableManger = new DataTableManger();
         }
 
+        //Usecase 1: Create and Insert values in DataTable
         [TestMethod]
         [TestCategory("Insert Values in Data Table")]
         public void GivenInsertValues_returnInteger()
@@ -22,6 +23,7 @@ namespace ContactManagerTesting
             int actual=dataTableManger.AddValues();
             Assert.AreEqual(actual, expected);
         }
+        //Usecase 2: Modify values in DataTable based on Name
         [TestMethod]
         [TestCategory("Modify Values in Data Table")]
         public void GivenModifyValues_returnInteger()
@@ -36,6 +38,23 @@ namespace ContactManagerTesting
         {
             int expected = 0;
             int actual = dataTableManger.EditDataTable("mam", "Lastname");
+            Assert.AreEqual(actual, expected);
+        }
+        //Usecase 3: Delete values in DataTable based on Name
+        [TestMethod]
+        [TestCategory("Delete Row in Data Table")]
+        public void GivenDeleteQuery_returnInteger()
+        {
+            int expected = 1;
+            int actual = dataTableManger.DeleteRowInDataTable("lalita");
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        [TestCategory("Delete Row in Data Table-Negative Test Case")]
+        public void GivenWrongDeleteQuery_returnInteger()
+        {
+            int expected = 0;
+            int actual = dataTableManger.DeleteRowInDataTable("lala");
             Assert.AreEqual(actual, expected);
         }
     }

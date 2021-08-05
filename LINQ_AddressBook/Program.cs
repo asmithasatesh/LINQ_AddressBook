@@ -35,7 +35,7 @@ namespace LINQ_AddressBook
             contactDataManagers.zip = 123001;
             dataTableManger.InsertintoDataTable(contactDataManagers);
             dataTableManger.Display();
-            int varl=dataTableManger.EditDataTable("lalita","Lastname");
+            int varl = dataTableManger.DeleteRowInDataTable("lalita");
             Console.WriteLine("Success"+varl);
         }
     }
