@@ -74,5 +74,22 @@ namespace ContactManagerTesting
             string actual = dataTableManger.RetrieveBasedOnCityorState("Lucknow", "UP");
             Assert.AreEqual(actual, expected);
         }
+        //Usecase 4: Retrieve count values from DataTable based on City or State
+        [TestMethod]
+        [TestCategory("Retrieve Row in Data Table based on City ")]
+        public void GivenRetrieveCountQuery_BasedOnCityandState_returnString()
+        {
+            int expected = 1;
+            int actual = dataTableManger.RetrieveCountBasedOnCityorState("Lucknow", "TN");
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        [TestCategory("Retrieve Row in Data Table based on state ")]
+        public void GivenRetrieveCountQuery_BasedOnCityorState_returnString()
+        {
+            int expected = 2;
+            int actual = dataTableManger.RetrieveCountBasedOnCityorState("Lucknow", "UP");
+            Assert.AreEqual(actual, expected);
+        }
     }
 }
