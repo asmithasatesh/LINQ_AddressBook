@@ -40,12 +40,12 @@ namespace LINQ_AddressBook
             contactDataManagerss.PhoneNumber = 7742905050;
             contactDataManagerss.Email = "lalita@gmail.com";
             contactDataManagerss.Address = "Catherine Street B PB marg";
-            contactDataManagerss.City = "ci";
-            contactDataManagerss.State = "TN";
+            contactDataManagerss.City = "chennai";
+            contactDataManagerss.State = "TNc";
             contactDataManagerss.zip = 123001;
             dataTableManger.InsertintoDataTable(contactDataManagerss);
             dataTableManger.Display();
-            string varl = dataTableManger.RetrieveCountBasedOnCityorState();
+            string varl = dataTableManger.SortBasedOnNameInDataTable("chennai");
             Console.WriteLine("Success"+varl);
         }
     }
