@@ -10,6 +10,7 @@ namespace LINQ_AddressBook
             //Create Object for DataTable
             ContactDataManager contactDataManager = new ContactDataManager();
             ContactDataManager contactDataManagers = new ContactDataManager();
+            ContactDataManager contactDataManagersss = new ContactDataManager();
             DataTableManger dataTableManger = new DataTableManger();
             dataTableManger.CreateDataTable();
 
@@ -38,21 +39,22 @@ namespace LINQ_AddressBook
             contactDataManagers.AddressBookName = "Ashs book";
             contactDataManagers.Type = "Family";
             dataTableManger.InsertintoDataTable(contactDataManagers);
-            ContactDataManager contactDataManagerss = new ContactDataManager();
-            contactDataManagerss.FirstName = "lalita";
-            contactDataManagerss.LastName = "poojah";
-            contactDataManagerss.PhoneNumber = 7742905050;
-            contactDataManagerss.Email = "lalita@gmail.com";
-            contactDataManagerss.Address = "Catherine Street B PB marg";
-            contactDataManagerss.City = "chennai";
-            contactDataManagerss.State = "TNc";
-            contactDataManagerss.zip = 123001;
-            contactDataManagerss.AddressBookName = "Pramelas book";
-            contactDataManagerss.Type = "Profession";
-            dataTableManger.InsertintoDataTable(contactDataManagerss);
+            //Insert Values into Table
+            contactDataManagersss.FirstName = "lalita";
+            contactDataManagersss.LastName = "poojah";
+            contactDataManagersss.PhoneNumber = 7742905050;
+            contactDataManagersss.Email = "lalita@gmail.com";
+            contactDataManagersss.Address = "Catherine Street B PB marg";
+            contactDataManagersss.City = "chennai";
+            contactDataManagersss.State = "TN";
+            contactDataManagersss.zip = 123001;
+            contactDataManagersss.AddressBookName = "Ashs book";
+            contactDataManagersss.Type = "Friends";
+            dataTableManger.InsertintoDataTable(contactDataManagers);
+
             dataTableManger.Display();
-            string varl = dataTableManger.RetrieveCountBasedOnType();
-            Console.WriteLine("Success"+varl);
+            //string varl = dataTableManger.RetrieveCountBasedOnType();
+            //Console.WriteLine("Success"+varl);
         }
     }
 }

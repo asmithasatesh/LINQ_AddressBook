@@ -162,7 +162,19 @@ namespace LINQ_AddressBook
             contactDataManager.AddressBookName = "Ashs Book";
             contactDataManager.Type = "Friends";
             InsertintoDataTable(contactDataManagers);
+            contactDataManagers.FirstName = "lalita";
+            contactDataManagers.LastName = "poojah";
+            contactDataManagers.PhoneNumber = 7742905050;
+            contactDataManagers.Email = "lalita@gmail.com";
+            contactDataManagers.Address = "Catherine Street B PB marg";
+            contactDataManagers.City = "Lucknow";
+            contactDataManagers.State = "UP";
+            contactDataManagers.zip = 123001;
+            contactDataManager.AddressBookName = "Ashs Book";
+            contactDataManager.Type = "Family";
+            InsertintoDataTable(contactDataManagers);
             custTable.Rows.Add(3,"Merra", "Rajput", "Manikandapyram", "Lucknow", "UP", "meera@gmail.com", 98524930303, 12345,"Preamelas book","Profession");
+            Display();
             return custTable.Rows.Count;
         }
 
