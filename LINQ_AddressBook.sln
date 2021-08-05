@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_AddressBook", "LINQ_AddressBook\LINQ_AddressBook.csproj", "{73A96BE0-C366-4562-BD7E-175E99FF2948}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagerTesting", "ContactManagerTesting\ContactManagerTesting.csproj", "{301355D7-3866-4728-8596-26E0F7EFD9E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{73A96BE0-C366-4562-BD7E-175E99FF2948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73A96BE0-C366-4562-BD7E-175E99FF2948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73A96BE0-C366-4562-BD7E-175E99FF2948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301355D7-3866-4728-8596-26E0F7EFD9E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301355D7-3866-4728-8596-26E0F7EFD9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301355D7-3866-4728-8596-26E0F7EFD9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301355D7-3866-4728-8596-26E0F7EFD9E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
