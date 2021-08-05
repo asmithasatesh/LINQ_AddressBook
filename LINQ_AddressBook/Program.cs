@@ -30,12 +30,12 @@ namespace LINQ_AddressBook
             contactDataManagers.PhoneNumber = 7742905050;
             contactDataManagers.Email = "lalita@gmail.com";
             contactDataManagers.Address = "Catherine Street B PB marg";
-            contactDataManagers.City = "Bareilly";
-            contactDataManagers.State = "UP";
+            contactDataManagers.City = "chennai";
+            contactDataManagers.State = "TN";
             contactDataManagers.zip = 123001;
             dataTableManger.InsertintoDataTable(contactDataManagers);
             dataTableManger.Display();
-            int varl = dataTableManger.DeleteRowInDataTable("lalita");
+            string varl = dataTableManger.RetrieveBasedOnCityorState("Bareilly", "UP");
             Console.WriteLine("Success"+varl);
         }
     }

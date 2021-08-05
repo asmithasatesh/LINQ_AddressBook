@@ -136,20 +136,10 @@ namespace LINQ_AddressBook
             contactDataManagers.PhoneNumber = 7742905050;
             contactDataManagers.Email = "lalita@gmail.com";
             contactDataManagers.Address = "Catherine Street B PB marg";
-            contactDataManagers.City = "Bareilly";
+            contactDataManagers.City = "Lucknow";
             contactDataManagers.State = "UP";
             contactDataManagers.zip = 123001;
             InsertintoDataTable(contactDataManagers);
-            contactDataManagers.FirstName = "lalita";
-            contactDataManagers.LastName = "pfffjah";
-            contactDataManagers.PhoneNumber = 7742905050;
-            contactDataManagers.Email = "lalita@gmail.com";
-            contactDataManagers.Address = "Catherine Street B PB marg";
-            contactDataManagers.City = "Bareilly";
-            contactDataManagers.State = "UP";
-            contactDataManagers.zip = 123001;
-            InsertintoDataTable(contactDataManagers);
-
             return custTable.Rows.Count;
         }
 
@@ -195,6 +185,19 @@ namespace LINQ_AddressBook
                 return 1;
             }
             else return 0;
+        }
+        //Retrieve values from DataTable based on City or State
+        public string RetrieveBasedOnCityorState(string City,string State)
+        {
+            AddValues();
+            string nameList = "";
+            var modifiedList = (from ContactList in custTable.AsEnumerable() where (ContactList.Field<string>("State") == State || ContactList.Field<string>("City") == City) select ContactList);
+            foreach(var dtRows in modifiedList)
+            {
+                nameList += dtRows["FirstName"] + " ";
+                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8}\n", dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+            }
+            return nameList;
         }
         //Display all Values in DataRow
         public void Display()
