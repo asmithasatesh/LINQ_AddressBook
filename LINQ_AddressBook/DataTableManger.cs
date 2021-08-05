@@ -110,6 +110,23 @@ namespace LINQ_AddressBook
             dtColumn.Unique = false;
             // Add column to the DataColumnCollection.    
             custTable.Columns.Add(dtColumn);
+            // Create Address column.    
+            dtColumn = new DataColumn();
+            dtColumn.DataType = typeof(string);
+            dtColumn.ColumnName = "AddressBook_Name";
+            dtColumn.Caption = "AddressBook_Name";
+            dtColumn.ReadOnly = false;
+            dtColumn.Unique = false;
+            // Add column to the DataColumnCollection.    
+            custTable.Columns.Add(dtColumn);
+            dtColumn = new DataColumn();
+            dtColumn.DataType = typeof(string);
+            dtColumn.ColumnName = "ContactType";
+            dtColumn.Caption = "Contact Type";
+            dtColumn.ReadOnly = false;
+            dtColumn.Unique = false;
+            // Add column to the DataColumnCollection.    
+            custTable.Columns.Add(dtColumn);
 
         }
         //Insert Values in Datatable
@@ -129,6 +146,8 @@ namespace LINQ_AddressBook
             contactDataManager.City = "Bareilly";
             contactDataManager.State = "UP";
             contactDataManager.zip = 243001;
+            contactDataManager.AddressBookName = "Ashs Book";
+            contactDataManager.Type = "Family";
             InsertintoDataTable(contactDataManager);
 
             //Insert Values into Table
@@ -140,8 +159,10 @@ namespace LINQ_AddressBook
             contactDataManagers.City = "Lucknow";
             contactDataManagers.State = "UP";
             contactDataManagers.zip = 123001;
+            contactDataManager.AddressBookName = "Ashs Book";
+            contactDataManager.Type = "Friends";
             InsertintoDataTable(contactDataManagers);
-            custTable.Rows.Add(3,"Merra", "Rajput", "Manikandapyram", "Lucknow", "UP", "meera@gmail.com", 98524930303, 12345);
+            custTable.Rows.Add(3,"Merra", "Rajput", "Manikandapyram", "Lucknow", "UP", "meera@gmail.com", 98524930303, 12345,"Preamelas book","Profession");
             return custTable.Rows.Count;
         }
 
@@ -157,6 +178,8 @@ namespace LINQ_AddressBook
             dtRow["Zip"] = contactDataManager.zip;
             dtRow["PhoneNumber"] = contactDataManager.PhoneNumber;
             dtRow["Email"] = contactDataManager.Email;
+            dtRow["AddressBook_Name"] = contactDataManager.AddressBookName;
+            dtRow["ContactType"] = contactDataManager.Type;
             custTable.Rows.Add(dtRow);
 
         }
@@ -188,7 +211,7 @@ namespace LINQ_AddressBook
             }
             else return 0;
         }
-        //Delete a row from DataTable based on Name
+        //Sort based on City
         public string SortBasedOnNameInDataTable(string City)
         {
             AddValues();
@@ -234,12 +257,30 @@ namespace LINQ_AddressBook
             }
             return result;
         }
+        //Retrieve Count values from DataTable based on City or State
+        public string RetrieveCountBasedOnType()
+        {
+            AddValues();
+            string result = "";
+            var modifiedList = (from ContactList in custTable.AsEnumerable().GroupBy(r => new { Col1 = r["ContactType"]}) select ContactList);
+            Console.WriteLine("Äfter count");
+            foreach (var j in modifiedList)
+            {
+                result += j.Count() + " ";
+                Console.WriteLine("Count Key" + j.Key);
+                foreach (var dtRows in j)
+                {
+                    Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8} \t {9}\n", dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"],dtRows["ContactType"]);
+                }
+            }
+            return result;
+        }
         //Display all Values in DataRow
         public void Display()
         {
             foreach (DataRow dtRows in custTable.Rows)
             {
-                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8}\n",dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8} \t {9} \t {10}\n",dtRows["Contactid"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"],dtRows["AddressBook_Name"],dtRows["ContactType"]);
             }
         }
     }

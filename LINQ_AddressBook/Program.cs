@@ -22,6 +22,8 @@ namespace LINQ_AddressBook
             contactDataManager.City = "Bareilly";
             contactDataManager.State = "UP";
             contactDataManager.zip = 243001;
+            contactDataManager.AddressBookName = "Ashs book";
+            contactDataManager.Type = "Family";
             dataTableManger.InsertintoDataTable(contactDataManager);
 
             //Insert Values into Table
@@ -33,6 +35,8 @@ namespace LINQ_AddressBook
             contactDataManagers.City = "chennai";
             contactDataManagers.State = "TN";
             contactDataManagers.zip = 123001;
+            contactDataManagers.AddressBookName = "Ashs book";
+            contactDataManagers.Type = "Family";
             dataTableManger.InsertintoDataTable(contactDataManagers);
             ContactDataManager contactDataManagerss = new ContactDataManager();
             contactDataManagerss.FirstName = "lalita";
@@ -43,9 +47,11 @@ namespace LINQ_AddressBook
             contactDataManagerss.City = "chennai";
             contactDataManagerss.State = "TNc";
             contactDataManagerss.zip = 123001;
+            contactDataManagerss.AddressBookName = "Pramelas book";
+            contactDataManagerss.Type = "Profession";
             dataTableManger.InsertintoDataTable(contactDataManagerss);
             dataTableManger.Display();
-            string varl = dataTableManger.SortBasedOnNameInDataTable("chennai");
+            string varl = dataTableManger.RetrieveCountBasedOnType();
             Console.WriteLine("Success"+varl);
         }
     }
